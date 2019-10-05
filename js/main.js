@@ -59,7 +59,19 @@ var posts = {
 
 xhttp.send()
 
+xhttp.onreadystatechange = function () {
+  if (this.readyState === 4 && this.status === 200) {
+    let response = JSON.parse(this.response)
+    for (i in response){
+      console.log(response[i])
+    }
+  }
+}
+
+
+
 document.getElementById('container').innerHTML = `
+<div class="card-deck">
 <div class="card" style="width: 18rem;">
 <img class="card-img-top"
   src="${posts.img}"
@@ -69,4 +81,30 @@ document.getElementById('container').innerHTML = `
   <p class="card-text">${posts.description}</p>
 </div>
 </div>
+
+
+
+<div class="card" style="width: 18rem;">
+<img class="card-img-top"
+  src="${posts.img}"
+  alt="Card image cap">
+<div class="card-body">
+  <h5 class="card-title">${posts.title}</h5>
+  <p class="card-text">${posts.description}</p>
+</div>
+</div>
+</div>
+
+<div class="card" style="width: 18rem;">
+<img class="card-img-top"
+  src="${posts.img}"
+  alt="Card image cap">
+<div class="card-body">
+  <h5 class="card-title">${posts.title}</h5>
+  <p class="card-text">${posts.description}</p>
+</div>
+</div>
+</div>
+
+
 `
