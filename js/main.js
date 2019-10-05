@@ -1,10 +1,10 @@
 var xhttp = new XMLHttpRequest()
-xhttp.onreadystatechange = function () {
-  console.log(this.readyState, xhttp.status);
-  if (this.readyState === 4 && this.status === 200) {
-    console.log(this.response);
-  }
-}
+// xhttp.onreadystatechange = function () {
+//   console.log(this.readyState, xhttp.status);
+//   if (this.readyState === 4 && this.status === 200) {
+//     console.log(this.response);
+//   }
+// }
 // // xhttp.open("GET", "data/hello_world.json")
 // // xhttp.send()
 // var xhttp = new XMLHttpRequest()
@@ -39,11 +39,34 @@ xhttp.onreadystatechange = function () {
 //     parent.appendChild(node)
 //   });
 // }
-xhttp.open('POST', "https://ajaxkode.firebaseio.com/posts.json")
+// xhttp.open('POST', "https://ajaxkode.firebaseio.com/posts.json")
+// var posts = {
+//   title: "Black Hole",
+//   description: "The first picture of black hole",
+//   img: "https://images.newscientist.com/wp-content/uploads/2019/04/08111018/screenshot-2019-04-08-10.24.34.jpg",
+//   author: "Josue Xicotencatl Avalos"
+// }
+// xhttp.send(JSON.stringify(posts))
+
+xhttp.open('GET', "https://ajaxkode.firebaseio.com/posts.json")
+
 var posts = {
   title: "Black Hole",
   description: "The first picture of black hole",
   img: "https://images.newscientist.com/wp-content/uploads/2019/04/08111018/screenshot-2019-04-08-10.24.34.jpg",
   author: "Josue Xicotencatl Avalos"
 }
-xhttp.send(JSON.stringify(posts))
+
+xhttp.send()
+
+document.getElementById('container').innerHTML = `
+<div class="card" style="width: 18rem;">
+<img class="card-img-top"
+  src="${posts.img}"
+  alt="Card image cap">
+<div class="card-body">
+  <h5 class="card-title">${posts.title}</h5>
+  <p class="card-text">${posts.description}</p>
+</div>
+</div>
+`
